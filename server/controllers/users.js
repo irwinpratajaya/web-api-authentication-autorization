@@ -78,7 +78,9 @@ users.verifyToken = function (req,res,next) {
   jwt.verify(token,'rahasia', function (err, decode) {
     if (err) {
       res.json(err)
-    } else if (!decode) {
+    }
+
+    if (!decode) {
       res.json({email: false})
     } else {
       res.json({email: true})
